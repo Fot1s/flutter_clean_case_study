@@ -10,8 +10,9 @@ class DataCategoriesRepository extends CategoriesRepository {
   DataCategoriesRepository._internal() {
     categories = <Category>[];
     categories.addAll([
-      Category('uid-1', 'Shoes'),
-      Category('uid-2', 'Clothes')
+      Category('uid-1', 'Bags', 'assets/images/category_bags.png'),
+      Category('uid-2', 'Dresses', 'assets/images/category_dresses.png'),
+      Category('uid-3', 'Scarpins', 'assets/images/category_scarpins.png')
     ]);
   }
   factory DataCategoriesRepository() => _instance;

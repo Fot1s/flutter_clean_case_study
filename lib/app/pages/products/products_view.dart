@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_case_study/app/pages/product_details/product_details_view.dart';
 
 import 'package:flutter_case_study/app/pages/products/products_controller.dart';
-import 'package:flutter_case_study/app/pages/products/widgets/item_card.dart';
+import 'package:flutter_case_study/app/pages/products/widgets/product_item_card.dart';
 import 'package:flutter_case_study/app/widgets/scaffold_with_drawer.dart';
 import 'package:flutter_case_study/data/repositories/data_products_repository.dart';
 import 'package:flutter_case_study/domain/entities/product.dart';
@@ -69,7 +69,7 @@ class _ProductsPagePageState
                   crossAxisSpacing: kDefaultPaddin,
                   childAspectRatio: 0.75,
                 ),
-                itemBuilder: (context, index) => ItemCard(
+                itemBuilder: (context, index) => ProductItemCard(
                   product: products[index],
                   press: () => Navigator.push(
                       context,

@@ -59,6 +59,9 @@ flutter:
     - assets/images/bag_4.png
     - assets/images/bag_5.png
     - assets/images/bag_6.png
+    - assets/images/category_bags.png
+    - assets/images/category_dresses.png
+    - assets/images/category_scarpins.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_case_study/app/utils.dart';
-
-import 'package:flutter_case_study/domain/entities/product.dart';
+import 'package:flutter_case_study/domain/entities/category.dart';
 
 import '../../../constants.dart';
 
-class ItemCard extends StatelessWidget {
-  final Product product;
+class CategoryItemCard extends StatelessWidget {
+  final Category category;
   final Function press;
-  const ItemCard({
+  const CategoryItemCard({
     Key key,
-    this.product,
+    this.category,
     this.press,
   }) : super(key: key);
 
@@ -19,32 +18,24 @@ class ItemCard extends StatelessWidget {
     return GestureDetector(
       onTap: press,
       child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           Expanded(
             child: Container(
               padding: EdgeInsets.all(kDefaultPaddin),
-              decoration: BoxDecoration(
-                color: product.color,
-                borderRadius: BorderRadius.circular(16),
-              ),
               child: Hero(
-                tag: product.uid,
-                child: Image.asset(product.image),
+                tag: category.uid,
+                child: Image.asset(category.image),
               ),
             ),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(vertical: kDefaultPaddin / 4),
             child: Text(
-              // products is out demo list
-              product.title,
+              category.title,
               style: TextStyle(color: kTextLightColor),
             ),
           ),
-          Text(Utils.formatCurrency(product.price),
-            style: TextStyle(fontWeight: FontWeight.bold),
-          )
         ],
       ),
     );
