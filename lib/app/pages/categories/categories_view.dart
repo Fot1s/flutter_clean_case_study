@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_case_study/app/pages/categories/categories_controller.dart';
 import 'package:flutter_case_study/app/pages/categories/widgets/category_item_card.dart';
+import 'package:flutter_case_study/app/pages/products/products_view.dart';
 import 'package:flutter_case_study/app/widgets/scaffold_with_drawer.dart';
 import 'package:flutter_case_study/data/repositories/data_categories_repository.dart';
 import 'package:flutter_case_study/domain/entities/category.dart';
@@ -68,13 +69,13 @@ class _CategoriesPageState
                 ),
                 itemBuilder: (context, index) => CategoryItemCard(
                   category: categories[index],
-                  // press: () => Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) => ProductDetailsScreen(
-                  //         product: products[index],
-                  //       ),
-                  //     )),
+                  press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductsPage(
+                          categories[index],
+                        ),
+                      )),
                 )
             ),
           ),

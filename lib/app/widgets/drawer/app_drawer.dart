@@ -84,7 +84,7 @@ class AppDrawer extends StatelessWidget
           route = CupertinoPageRoute(builder: (context) => CategoriesPage()) ;
           break ;
         case 2:
-          route = CupertinoPageRoute(builder: (context) => ProductsPage()) ;
+          route = CupertinoPageRoute(builder: (context) => ProductsPage.withoutCategory()) ;
           break ;
         default :
           Scaffold.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2),

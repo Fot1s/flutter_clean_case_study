@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_case_study/app/utils.dart';
 import 'package:flutter_case_study/domain/entities/category.dart';
 
 import '../../../constants.dart';

@@ -10,6 +10,7 @@ class ProductDetailsScreen extends StatelessWidget {
   final Product product;
 
   const ProductDetailsScreen({Key key, this.product}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

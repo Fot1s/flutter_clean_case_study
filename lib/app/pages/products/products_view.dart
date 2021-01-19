@@ -5,6 +5,7 @@ import 'package:flutter_case_study/app/pages/products/products_controller.dart';
 import 'package:flutter_case_study/app/pages/products/widgets/product_item_card.dart';
 import 'package:flutter_case_study/app/widgets/scaffold_with_drawer.dart';
 import 'package:flutter_case_study/data/repositories/data_products_repository.dart';
+import 'package:flutter_case_study/domain/entities/category.dart';
 import 'package:flutter_case_study/domain/entities/product.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
@@ -12,8 +13,12 @@ import '../../constants.dart';
 
 class ProductsPage extends View {
 
-  ProductsPage({Key key}) : super(key: key);
+  ProductsPage(this.category, {Key key}) : super(key: key);
+  ProductsPage.withoutCategory({Key key}) :
+        category = null,
+        super(key: key);
 
+  final Category category ;
   final String title = "Products Page";
 
   @override
