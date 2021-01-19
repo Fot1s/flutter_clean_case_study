@@ -29,8 +29,9 @@ class GetCategoriesUseCase extends UseCase<GetCategoriesUseCaseResponse,GetCateg
 
 
 class GetCategoriesUseCaseParams {
-  final String uid  ;
-  GetCategoriesUseCaseParams(this.uid);
+  // final String uid  ;
+  // GetCategoriesUseCaseParams(this.uid);
+  GetCategoriesUseCaseParams();
 }
 
 class GetCategoriesUseCaseResponse {
