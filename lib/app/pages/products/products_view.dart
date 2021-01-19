@@ -32,7 +32,7 @@ class _ProductsPagePageState
   Widget addBody() {
     return ControlledWidgetBuilder<ProductsController>(
       builder: (context, controller) {
-        return controller.products != null ? buildCategories(controller.products) : buildLoader() ;
+        return controller.products != null ? buildProducts(controller.products) : buildLoader() ;
       },
     ) ;
   }
@@ -47,7 +47,7 @@ class _ProductsPagePageState
         ));
   }
 
-  buildCategories(List<Product> products) {
+  buildProducts(List<Product> products) {
     return ListView.builder(
       itemCount: products.length,
       itemBuilder: (context, index) {
