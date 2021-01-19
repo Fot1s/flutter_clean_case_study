@@ -12,7 +12,9 @@ class Product {
 
   final String image ;
 
-  Product(this.uid, this.superTitle, this.title, this.description, this.price, this.size, this.color, this.image);
+  final String categoryUid ;
+
+  Product(this.uid, this.superTitle, this.title, this.description, this.price, this.size, this.color, this.image, this.categoryUid);
 
   // @override
   // String toString() => '$uid, $title, $description, ';
