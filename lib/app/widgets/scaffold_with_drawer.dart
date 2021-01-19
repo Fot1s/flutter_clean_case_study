@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 import 'drawer/app_drawer.dart';
-import 'drawer/app_drawer_state.dart';
 
 class ScaffoldWithDrawer extends StatelessWidget
 {

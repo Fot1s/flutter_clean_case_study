@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_case_study/app/pages/categories/categories_controller.dart';
 import 'package:flutter_case_study/app/widgets/scaffold_with_drawer.dart';
 import 'package:flutter_case_study/data/repositories/data_categories_repository.dart';

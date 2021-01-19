@@ -103,28 +103,4 @@ class AppDrawer extends StatelessWidget
       );
     }
   }
-
-  void _onCategoriesTapped(BuildContext context)
-  {
-    Navigator.pop(context);
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(builder: (context) => CategoriesPage()),
-    );
-  }
-
-
-  void _onItemsTapped(BuildContext context)
-  {
-    Navigator.pop(context);
-
-    //TODO: Enable when ready
-    // Navigator.push(
-    //   context,
-    //   CupertinoPageRoute(builder: (context) => ItemsPage()),
-    // );
-  }
-
-
 }
