@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_case_study/domain/entities/category.dart';
 import 'package:flutter_case_study/domain/entities/product.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
@@ -12,8 +12,12 @@ class ProductsController extends Controller {
 
   final ProductsPresenter productsPresenter ;
 
-  ProductsController(productsRepo) : productsPresenter = ProductsPresenter(productsRepo), super() {
-    getProducts() ;
+  ProductsController(productsRepo, category) : productsPresenter = ProductsPresenter(productsRepo), super() {
+    if (category != null) {
+      getProductsWithCategory(category) ;
+    } else {
+      getProducts() ;
+    }
   }
 
   @override
@@ -31,9 +35,11 @@ class ProductsController extends Controller {
 
     productsPresenter.getProductsOnError = (e) {
 
-        print('Could not retrieve products.');
-        ScaffoldState state = getState();
-        state.showSnackBar(SnackBar(content: Text(e.message)));
+      _products = [] ;
+      print('Could not retrieve products.');
+        //TODO: FIX: This is buggy!
+        // ScaffoldState state = getState();
+        // state.showSnackBar(SnackBar(content: Text(e.message)));
 
         refreshUI(); // Refreshes the UI manually
     } ;
@@ -41,6 +47,8 @@ class ProductsController extends Controller {
   }
 
   void getProducts() => productsPresenter.getProducts() ;
+
+  void getProductsWithCategory(Category category) => productsPresenter.getProductsWithCategory(category) ;
 
   @override
   void onResumed() => print('On resumed');
