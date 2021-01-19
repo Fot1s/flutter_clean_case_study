@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_case_study/app/pages/products/products_controller.dart';
+import 'package:flutter_case_study/app/pages/products/widgets/item_card.dart';
 import 'package:flutter_case_study/app/widgets/scaffold_with_drawer.dart';
 import 'package:flutter_case_study/data/repositories/data_products_repository.dart';
 import 'package:flutter_case_study/domain/entities/product.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+
+import '../../constants.dart';
 
 class ProductsPage extends View {
 
@@ -48,13 +52,35 @@ class _ProductsPagePageState
   }
 
   buildProducts(List<Product> products) {
-    return ListView.builder(
-      itemCount: products.length,
-      itemBuilder: (context, index) {
-        return ListTile(
-          title: Text('${products[index].title}'),
-        );
-      },
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        //TODO: Next version add categories here
+        // Categories(),
+        Expanded(
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(kDefaultPaddin,kDefaultPaddin,kDefaultPaddin,0),
+            child: GridView.builder(
+                itemCount: products.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: kDefaultPaddin,
+                  crossAxisSpacing: kDefaultPaddin,
+                  childAspectRatio: 0.75,
+                ),
+                itemBuilder: (context, index) => ItemCard(
+                  product: products[index],
+                  // press: () => Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => DetailsScreen(
+                  //         product: products[index],
+                  //       ),
+                  //     )),
+                )),
+          ),
+        ),
+      ],
     );
   }
 }
