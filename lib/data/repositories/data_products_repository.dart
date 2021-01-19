@@ -12,12 +12,12 @@ class DataProductsRepository extends ProductsRepository {
   DataProductsRepository._internal() {
     products = <Product>[];
     products.addAll([
-      Product("uid-1", "Office Bag", "Product Description goes here", 2000, 3, Color(0xFF3D82AE),"assets/images/bag_1.png"),
-      Product("uid-2", "Belt Bag", "Product Description goes here", 1900, 2, Color(0xFFD3A984),"assets/images/bag_2.png"),
-      Product("uid-3", "Hang Top", "Product Description goes here", 3200, 2, Color(0xFF989493),"assets/images/bag_3.png"),
-      Product("uid-4", "Old Fashion", "Product Description goes here", 1360, 4, Color(0xFFE6B398),"assets/images/bag_4.png"),
-      Product("uid-5", "Office Code", "Product Description goes here", 1999, 5, Color(0xFFFB7883),"assets/images/bag_5.png"),
-      Product("uid-6", "Office", "Product Description goes here", 9999, 1, Color(0xFFAEAEAE),"assets/images/bag_6.png")
+      Product("uid-1", "Amazing Offer","Office Bag", "Product Description goes here", 2000, 35, Color(0xFF3D82AE),"assets/images/bag_1.png"),
+      Product("uid-2", "Aristocratic HandBag", "Belt Bag", "Product Description goes here", 1900, 20, Color(0xFFD3A984),"assets/images/bag_2.png"),
+      Product("uid-3", "What a bug!", "Hang Top", "Product Description goes here", 3200, 25, Color(0xFF989493),"assets/images/bag_3.png"),
+      Product("uid-4", "For modern people", "Old Fashion", "Product Description goes here", 1360, 20, Color(0xFFE6B398),"assets/images/bag_4.png"),
+      Product("uid-5", "70% off!", "Office Code", "Product Description goes here", 1999, 35, Color(0xFFFB7883),"assets/images/bag_5.png"),
+      Product("uid-6", "You have to have this!", "Office", "Product Description goes here", 9999, 40, Color(0xFFAEAEAE),"assets/images/bag_6.png")
     ]);
   }
   factory DataProductsRepository() => _instance;

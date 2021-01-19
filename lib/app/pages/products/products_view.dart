@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_case_study/app/pages/product_details/product_details_view.dart';
 
 import 'package:flutter_case_study/app/pages/products/products_controller.dart';
 import 'package:flutter_case_study/app/pages/products/widgets/item_card.dart';
@@ -70,13 +71,13 @@ class _ProductsPagePageState
                 ),
                 itemBuilder: (context, index) => ItemCard(
                   product: products[index],
-                  // press: () => Navigator.push(
-                  //     context,
-                  //     MaterialPageRoute(
-                  //       builder: (context) => DetailsScreen(
-                  //         product: products[index],
-                  //       ),
-                  //     )),
+                  press: () => Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ProductDetailsScreen(
+                          product: products[index],
+                        ),
+                      )),
                 )),
           ),
         ),
