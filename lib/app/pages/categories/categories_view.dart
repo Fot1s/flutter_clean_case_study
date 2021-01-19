@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_case_study/app/pages/categories/categories_controller.dart';
 import 'package:flutter_case_study/app/pages/categories/widgets/category_item_card.dart';
@@ -71,7 +72,7 @@ class _CategoriesPageState
                   category: categories[index],
                   press: () => Navigator.push(
                       context,
-                      MaterialPageRoute(
+                      CupertinoPageRoute(
                         builder: (context) => ProductsPage(
                           categories[index],
                         ),
