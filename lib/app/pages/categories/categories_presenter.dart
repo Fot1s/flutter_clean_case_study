@@ -13,7 +13,7 @@ class CategoriesPresenter extends Presenter{
 
   void getCategories() {
     getCategoriesUseCase.execute(
-        _GetCategoriesUseCaseObserver(this), GetCategoriesUseCaseParams("test"));
+        _GetCategoriesUseCaseObserver(this));
   }
 
   @override

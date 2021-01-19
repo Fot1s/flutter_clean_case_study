@@ -5,14 +5,14 @@ import 'package:flutter_case_study/domain/entities/category.dart';
 import 'package:flutter_case_study/domain/repositories/categories_repository.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
-class GetCategoriesUseCase extends UseCase<GetCategoriesUseCaseResponse,GetCategoriesUseCaseParams> {
+class GetCategoriesUseCase extends UseCase<GetCategoriesUseCaseResponse, void> {
 
   final CategoriesRepository categoriesRepository;
 
   GetCategoriesUseCase(this.categoriesRepository);
 
   @override
-  Future<Stream<GetCategoriesUseCaseResponse>> buildUseCaseStream(GetCategoriesUseCaseParams params) async {
+  Future<Stream<GetCategoriesUseCaseResponse>> buildUseCaseStream(void ignore) async {
 
     final controller = StreamController<GetCategoriesUseCaseResponse>() ;
 
@@ -25,13 +25,6 @@ class GetCategoriesUseCase extends UseCase<GetCategoriesUseCaseResponse,GetCateg
     }
     return controller.stream;
   }
-}
-
-
-class GetCategoriesUseCaseParams {
-  // final String uid  ;
-  // GetCategoriesUseCaseParams(this.uid);
-  GetCategoriesUseCaseParams();
 }
 
 class GetCategoriesUseCaseResponse {
