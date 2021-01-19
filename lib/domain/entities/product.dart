@@ -9,7 +9,9 @@ class Product {
   final int size  ;
   final Color color ;
 
-  Product(this.uid, this.title, this.description, this.price, this.size, this.color);
+  final String image ;
+
+  Product(this.uid, this.title, this.description, this.price, this.size, this.color, this.image);
 
   // @override
   // String toString() => '$uid, $title, $description, ';

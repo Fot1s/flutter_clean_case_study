@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_case_study/app/pages/categories/categories_view.dart';
+import 'package:flutter_case_study/app/pages/products/products_view.dart';
 import 'package:flutter_case_study/main.dart';
 import 'package:provider/provider.dart';
 
@@ -22,7 +23,7 @@ class AppDrawer extends StatelessWidget
             Divider(height: 1,),
             _createDrawerItem(drawerId: 1, selectedDrawer: selectedDrawer, icon: Icons.contacts,text: 'Categories',onTap:(){ _onDrawerTapped(context,1,selectedDrawer);}),
             Divider(height: 1,),
-            _createDrawerItem(drawerId: 2, selectedDrawer: selectedDrawer, icon: Icons.star,text: 'Items',onTap:(){_onDrawerTapped(context,2,selectedDrawer);}),
+            _createDrawerItem(drawerId: 2, selectedDrawer: selectedDrawer, icon: Icons.star,text: 'Products',onTap:(){_onDrawerTapped(context,2,selectedDrawer);}),
             Divider(height: 1,),
             ],
           )
@@ -81,6 +82,9 @@ class AppDrawer extends StatelessWidget
           break ;
         case 1:
           route = CupertinoPageRoute(builder: (context) => CategoriesPage()) ;
+          break ;
+        case 2:
+          route = CupertinoPageRoute(builder: (context) => ProductsPage()) ;
           break ;
         default :
           Scaffold.of(context).showSnackBar(SnackBar(duration: Duration(seconds: 2),
