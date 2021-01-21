@@ -10,7 +10,6 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import '../../constants.dart';
 
 class CategoriesPage extends View {
-
   CategoriesPage({Key key}) : super(key: key);
 
   final String title = "Categories Page";
@@ -18,7 +17,7 @@ class CategoriesPage extends View {
   @override
   _CategoriesPageState createState() =>
       // inject dependencies inwards
-  _CategoriesPageState();
+      _CategoriesPageState();
 }
 
 class _CategoriesPageState
@@ -30,25 +29,27 @@ class _CategoriesPageState
   Widget get view {
     // built in global key for the ViewState for easy access in the controller
     return ScaffoldWithDrawer(
-      key: globalKey, title: widget.title, body: addBody(),);
+      key: globalKey,
+      title: widget.title,
+      body: addBody(),
+    );
   }
 
   Widget addBody() {
     return ControlledWidgetBuilder<CategoriesController>(
       builder: (context, controller) {
-        return controller.categories != null ? buildCategories(controller.categories) : buildLoader() ;
+        return controller.categories != null
+            ? buildCategories(controller.categories)
+            : buildLoader();
       },
-    ) ;
+    );
   }
 
   buildLoader() {
     return Center(
         child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              CircularProgressIndicator()
-            ]
-        ));
+            children: [CircularProgressIndicator()]));
   }
 
   buildCategories(List<Category> categories) {
@@ -59,27 +60,28 @@ class _CategoriesPageState
         // Categories(),
         Expanded(
           child: Padding(
-            padding: const EdgeInsets.fromLTRB(kDefaultPaddin,kDefaultPaddin,kDefaultPaddin,0),
-            child: GridView.builder(
-                itemCount: categories.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  mainAxisSpacing: kDefaultPaddin,
-                  crossAxisSpacing: kDefaultPaddin,
-                  childAspectRatio: 0.75,
-                ),
-                itemBuilder: (context, index) => CategoryItemCard(
-                  category: categories[index],
-                  press: () => Navigator.push(
-                      context,
-                      CupertinoPageRoute(
-                        builder: (context) => ProductsPage(
-                          categories[index],
-                        ),
-                      )),
-                )
-            ),
-          ),
+              padding: const EdgeInsets.fromLTRB(
+                  kDefaultPaddin, kDefaultPaddin, kDefaultPaddin, 0),
+              child: OrientationBuilder(builder: (context, orientation) {
+                return GridView.builder(
+                    itemCount: categories.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: orientation == Orientation.portrait ? 3 : 6,
+                      mainAxisSpacing: kDefaultPaddin,
+                      crossAxisSpacing: kDefaultPaddin,
+                      childAspectRatio: 0.75,
+                    ),
+                    itemBuilder: (context, index) => CategoryItemCard(
+                          category: categories[index],
+                          press: () => Navigator.push(
+                              context,
+                              CupertinoPageRoute(
+                                builder: (context) => ProductsPage(
+                                  categories[index],
+                                ),
+                              )),
+                        ));
+              })),
         ),
       ],
     );
