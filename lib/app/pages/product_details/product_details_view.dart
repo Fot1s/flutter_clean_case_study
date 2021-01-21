@@ -17,7 +17,7 @@ class ProductDetailsScreen extends StatelessWidget {
       // each product have a color
       backgroundColor: product.color,
       appBar: buildAppBar(context),
-      body: buildBody(context,product),
+      body: buildBody(context, product),
     );
   }
 
@@ -26,14 +26,63 @@ class ProductDetailsScreen extends StatelessWidget {
       backgroundColor: product.color,
       elevation: 0,
       leading: IconButton(
-        icon: Icon(Icons.arrow_back, color: Colors.white,),
+        icon: Icon(
+          Icons.arrow_back,
+          color: Colors.white,
+        ),
         onPressed: () => Navigator.pop(context),
       ),
     );
   }
 
   Widget buildBody(BuildContext context, Product product) {
-// It provide us total height and width
+    return OrientationBuilder(builder: (context, orientation) {
+      if (orientation == Orientation.portrait) {
+        return buildPortraitView(context);
+      } else {
+        return buildLandscapeView(context);
+      }
+    });
+  }
+
+  Widget buildLandscapeView(BuildContext context) {
+    return Row(
+      children: [
+        Expanded(child: ProductTitleWithImage(product: product, forPortraitMode: false,)),
+        Expanded(
+            child: Container(
+          margin: EdgeInsets.only(top: kDefaultPaddin),
+          padding: EdgeInsets.only(
+            top: kDefaultPaddin,
+            left: kDefaultPaddin,
+            right: kDefaultPaddin,
+          ),
+          // height: 500,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24),
+              topRight: Radius.circular(24),
+            ),
+          ),
+          child: Column(
+            children: <Widget>[
+              ColorAndSize(product: product),
+              SizedBox(height: kDefaultPaddin / 2),
+              Description(product: product),
+              SizedBox(height: kDefaultPaddin / 2),
+              // CounterWithFavBtn(),
+              // SizedBox(height: kDefaultPaddin / 2),
+              // AddToCart(product: product)
+            ],
+          ),
+        )),
+      ],
+    );
+  }
+
+  Widget buildPortraitView(BuildContext context) {
+    // It provide us total height and width
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
@@ -69,11 +118,12 @@ class ProductDetailsScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-                ProductTitleWithImage(product: product)
+                ProductTitleWithImage(product: product, forPortraitMode: true)
               ],
             ),
           )
         ],
       ),
-    );  }
+    );
+  }
 }
