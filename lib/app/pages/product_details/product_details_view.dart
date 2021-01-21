@@ -48,9 +48,14 @@ class ProductDetailsScreen extends StatelessWidget {
   Widget buildLandscapeView(BuildContext context) {
     return Row(
       children: [
-        Expanded(child: ProductTitleWithImage(product: product, forPortraitMode: false,)),
         Expanded(
-            child: Container(
+            child: ProductTitleWithImage(
+          product: product,
+          forPortraitMode: false,
+        )),
+        Expanded(
+            child: SingleChildScrollView(
+                child: Container(
           margin: EdgeInsets.only(top: kDefaultPaddin),
           padding: EdgeInsets.only(
             top: kDefaultPaddin,
@@ -76,7 +81,7 @@ class ProductDetailsScreen extends StatelessWidget {
               // AddToCart(product: product)
             ],
           ),
-        )),
+        ))),
       ],
     );
   }

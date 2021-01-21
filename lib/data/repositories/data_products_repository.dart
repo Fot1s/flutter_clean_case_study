@@ -19,7 +19,7 @@ class DataProductsRepository extends ProductsRepository {
       Product("uid-4", "For modern people", "Old Fashion", "Product Description goes here", 1360, 20, Color(0xFFE6B398),"assets/images/bag_4.png", 'cat-uid-1'),
       Product("uid-5", "70% off!", "Office Code", "Product Description goes here", 1999, 35, Color(0xFFFB7883),"assets/images/bag_5.png", 'cat-uid-1'),
       Product("uid-6", "You have to have this!", "Office", "Product Description goes here", 9999, 40, Color(0xFFAEAEAE),"assets/images/bag_6.png", 'cat-uid-1'),
-      Product("uid-7", "Little Black Dress", "Black Dress", "Product Description goes here", 19999, 50, Color(0xFF989493),"assets/images/dress_1.png", 'cat-uid-2')
+      Product("uid-7", "Little Black Dress", "Black Dress", "Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here,Product Description goes here", 19999, 50, Color(0xFF989493),"assets/images/dress_1.png", 'cat-uid-2')
     ]);
   }
   factory DataProductsRepository() => _instance;
