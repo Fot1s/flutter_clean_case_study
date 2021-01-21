@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_case_study/app/pages/product_details/widgets/color_and_size.dart';
 import 'package:flutter_case_study/app/pages/product_details/widgets/description.dart';
@@ -47,6 +48,7 @@ class ProductDetailsScreen extends StatelessWidget {
 
   Widget buildLandscapeView(BuildContext context) {
     return Row(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         Expanded(
             child: ProductTitleWithImage(
@@ -54,15 +56,15 @@ class ProductDetailsScreen extends StatelessWidget {
           forPortraitMode: false,
         )),
         Expanded(
-            child: SingleChildScrollView(
-                child: Container(
+             child: //SingleChildScrollView(
+            //     child:
+                Container(
           margin: EdgeInsets.only(top: kDefaultPaddin),
           padding: EdgeInsets.only(
             top: kDefaultPaddin,
             left: kDefaultPaddin,
             right: kDefaultPaddin,
           ),
-          // height: 500,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -70,7 +72,7 @@ class ProductDetailsScreen extends StatelessWidget {
               topRight: Radius.circular(24),
             ),
           ),
-          child: Column(
+          child: SingleChildScrollView( child: Column(
             children: <Widget>[
               ColorAndSize(product: product),
               SizedBox(height: kDefaultPaddin / 2),
@@ -80,8 +82,8 @@ class ProductDetailsScreen extends StatelessWidget {
               // SizedBox(height: kDefaultPaddin / 2),
               // AddToCart(product: product)
             ],
-          ),
-        ))),
+          )),
+        )),//),
       ],
     );
   }
