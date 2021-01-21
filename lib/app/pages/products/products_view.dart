@@ -12,15 +12,14 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import '../../constants.dart';
 
 class ProductsPage extends View {
+  final Category category;
+  final String title = "Products Page";
+
   ProductsPage(this.category, {Key key}) : super(key: key);
 
   ProductsPage.withoutCategory({Key key})
       : category = null,
         super(key: key);
-
-  final Category category;
-
-  final String title = "Products Page";
 
   @override
   _ProductsPagePageState createState() =>
@@ -37,11 +36,12 @@ class _ProductsPagePageState
   Widget get view {
     // built in global key for the ViewState for easy access in the controller
     return ScaffoldWithDrawer(
-        key: globalKey,
-        title: widget.title,
-        body: addBody(),
-        showBackInsteadOfDrawer: widget.category == null ? false : true,
-        withCategoryHero: widget.category,);
+      key: globalKey,
+      title: widget.title,
+      body: addBody(),
+      showBackInsteadOfDrawer: widget.category == null ? false : true,
+      withCategoryHero: widget.category,
+    );
   }
 
   Widget addBody() {
@@ -62,43 +62,47 @@ class _ProductsPagePageState
   }
 
   buildProducts(List<Product> products) {
-    return products.length == 0
-        ? Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text("There are no products for the moment!")],
+    if (products.length == 0) {
+      return Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [Text("There are no products for the moment!")],
+        ),
+      );
+    } else {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          //TODO: Next version add categories here
+          // Categories(),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                  kDefaultPaddin, kDefaultPaddin, kDefaultPaddin, 0),
+              child: OrientationBuilder(builder: (context, orientation) {
+                return GridView.builder(
+                    itemCount: products.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: orientation == Orientation.portrait ? 2 : 4,
+                      mainAxisSpacing: kDefaultPaddin,
+                      crossAxisSpacing: kDefaultPaddin,
+                      childAspectRatio: 0.75,
+                    ),
+                    itemBuilder: (context, index) => ProductItemCard(
+                          product: products[index],
+                          press: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ProductDetailsScreen(
+                                  product: products[index],
+                                ),
+                              )),
+                        ));
+              }),
             ),
-          )
-        : Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              //TODO: Next version add categories here
-              // Categories(),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.fromLTRB(
-                      kDefaultPaddin, kDefaultPaddin, kDefaultPaddin, 0),
-                  child: GridView.builder(
-                      itemCount: products.length,
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: kDefaultPaddin,
-                        crossAxisSpacing: kDefaultPaddin,
-                        childAspectRatio: 0.75,
-                      ),
-                      itemBuilder: (context, index) => ProductItemCard(
-                            product: products[index],
-                            press: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => ProductDetailsScreen(
-                                    product: products[index],
-                                  ),
-                                )),
-                          )),
-                ),
-              ),
-            ],
-          );
+          ),
+        ],
+      );
+    }
   }
 }
